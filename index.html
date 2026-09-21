@@ -1,0 +1,1208 @@
+<title>ELLA PARFUM</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@300;400;500&display=swap">
+<style>
+  :root {
+    --navy: #13253F;
+    --night: #0C1929;
+    --ivory: #F4F0E6;
+    --white: #FFFFFF;
+    --gold: #C9A96A;
+    --gold-deep: #7C5D34;
+    --pearl: #A9B4C4;
+    --slate: #4E5867;
+    --hair-gold: rgba(201, 169, 106, 0.32);
+    --hair-gold-strong: rgba(201, 169, 106, 0.55);
+    --hair-dark: rgba(19, 37, 63, 0.14);
+    --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans: 'Jost', system-ui, 'Segoe UI', Helvetica, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ivory);
+    color: var(--navy);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { margin: 0; font-weight: 400; text-wrap: balance; }
+  p { margin: 0; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .rule-orn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .rule-orn span:first-child,
+  .rule-orn span:last-child { width: 48px; height: 1px; background: var(--hair-gold-strong); }
+  .lozenge { width: 6px; height: 6px; transform: rotate(45deg); border: 1px solid var(--gold); }
+
+  /* ---------- botones ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 13px 26px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .btn--gold { background: var(--gold); color: var(--navy); }
+  .btn--gold:hover { background: #DBBE83; }
+  .btn--ghost { background: transparent; color: var(--gold); border-color: var(--hair-gold-strong); }
+  .btn--ghost:hover { border-color: var(--gold); background: rgba(201, 169, 106, 0.1); }
+  .btn--outline-dark { background: transparent; color: var(--navy); border-color: rgba(19, 37, 63, 0.35); }
+  .btn--outline-dark:hover { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
+  .btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+  /* ---------- barra de anuncio ---------- */
+  .announce {
+    background: var(--night);
+    color: var(--pearl);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .announce__in {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-block: 9px;
+  }
+  .announce__social { display: flex; align-items: center; gap: 14px; }
+  .announce__social a { display: inline-flex; color: var(--gold); text-decoration: none; }
+  .announce__social a:hover { color: var(--ivory); }
+
+  /* ---------- header ---------- */
+  .site-header {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 40;
+    background: var(--navy);
+    border-bottom: 1px solid var(--hair-gold);
+  }
+  .site-header__in {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding-block: 14px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand__name {
+    font-family: var(--serif);
+    font-size: 25px;
+    line-height: 1;
+    letter-spacing: 6px;
+    color: var(--ivory);
+  }
+  .brand__sub {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-top: 5px;
+  }
+  .nav { display: flex; align-items: center; gap: 28px; }
+  .nav a {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ivory);
+    text-decoration: none;
+    padding-block: 6px;
+    border-bottom: 1px solid transparent;
+  }
+  .nav a:hover { color: var(--gold); border-bottom-color: var(--hair-gold-strong); }
+  .cart-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    background: transparent;
+    border: 1px solid var(--hair-gold-strong);
+    border-radius: 2px;
+    color: var(--gold);
+    cursor: pointer;
+  }
+  .cart-btn:hover { background: rgba(201, 169, 106, 0.1); }
+  .cart-btn__count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: 21px;
+    height: 21px;
+    padding-inline: 5px;
+    border-radius: 999px;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+  }
+
+  /* ---------- medallón ---------- */
+  .medal { position: relative; display: grid; place-items: center; }
+  .medal__ring,
+  .medal__ring-in {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+  }
+  .medal__ring-in { inset: 6px; border-color: var(--hair-gold); }
+  .medal__mono {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: .22em;
+    font-family: var(--serif);
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .medal__bar { width: 1px; background: var(--hair-gold-strong); }
+
+  /* ---------- bandas ---------- */
+  .band--navy { background: var(--navy); color: var(--ivory); }
+  .band--night { background: var(--night); color: var(--ivory); }
+  .band--ivory { background: var(--ivory); color: var(--navy); }
+  .band__in { padding-block: clamp(56px, 8vw, 92px); }
+
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .section-head__line { flex: 1; height: 1px; background: var(--hair-dark); }
+  .band--navy .section-head__line,
+  .band--night .section-head__line { background: var(--hair-gold); }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 46px);
+    line-height: 1.15;
+    letter-spacing: 1px;
+  }
+  .section-lead {
+    margin-top: 12px;
+    max-width: 62ch;
+    color: var(--slate);
+  }
+  .band--navy .section-lead,
+  .band--night .section-lead { color: var(--pearl); }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; background: var(--navy); color: var(--ivory); overflow: hidden; }
+  .hero__frame {
+    position: absolute;
+    inset: 22px;
+    border: 1px solid var(--hair-gold);
+    pointer-events: none;
+  }
+  .hero__frame::after {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(201, 169, 106, 0.16);
+  }
+  .hero__corner {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    background: var(--navy);
+    border: 1px solid var(--gold);
+    pointer-events: none;
+  }
+  .hero__in {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 26px;
+    padding-block: clamp(54px, 9vw, 92px);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(36px, 6.4vw, 66px);
+    line-height: 1.12;
+    letter-spacing: 1px;
+    max-width: 17ch;
+  }
+  .hero__sub {
+    max-width: 54ch;
+    color: var(--pearl);
+    font-size: 17px;
+  }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .hero__note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pearl);
+  }
+
+  /* ---------- confianza ---------- */
+  .trust { background: var(--night); border-block: 1px solid var(--hair-gold); }
+  .trust__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--hair-gold);
+  }
+  .trust__item {
+    background: var(--night);
+    padding: 26px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .trust__item svg { flex: none; color: var(--gold); margin-top: 2px; }
+  .trust__t { font-size: 14px; font-weight: 500; color: var(--ivory); letter-spacing: .5px; }
+  .trust__d { font-size: 13px; color: var(--pearl); margin-top: 3px; }
+
+  /* ---------- catálogo ---------- */
+  .grid-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 26px;
+    margin-top: 40px;
+  }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--hair-dark);
+    display: flex;
+    flex-direction: column;
+  }
+  .card__media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background: var(--navy);
+    display: grid;
+    place-items: center;
+    gap: 10px;
+    overflow: hidden;
+  }
+  .card__media img { width: 100%; height: 100%; object-fit: cover; }
+  .card__ph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .card__ph-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--pearl);
+  }
+  .card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 22px 22px 24px;
+    flex: 1;
+  }
+  .card__name {
+    font-family: var(--serif);
+    font-size: 25px;
+    line-height: 1.2;
+    letter-spacing: .5px;
+  }
+  .card__notes { font-size: 13px; color: var(--slate); }
+  .card__meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 6px;
+    padding-top: 14px;
+    border-top: 1px solid var(--hair-dark);
+  }
+  .card__price {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--navy);
+    font-variant-numeric: tabular-nums;
+  }
+  .card__size { font-size: 12px; letter-spacing: 2px; color: var(--slate); text-transform: uppercase; }
+  .card .btn { width: 100%; margin-top: 14px; }
+
+  /* ---------- pasos ---------- */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+    gap: 26px;
+    margin-top: 40px;
+  }
+  .step { display: flex; flex-direction: column; gap: 12px; }
+  .step__n {
+    font-family: var(--serif);
+    font-size: 46px;
+    line-height: 1;
+    color: var(--gold);
+  }
+  .step__t { font-size: 17px; font-weight: 500; color: var(--ivory); }
+  .step__d { font-size: 14px; color: var(--pearl); }
+
+  /* ---------- envíos y pagos ---------- */
+  .duo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 26px;
+    margin-top: 40px;
+  }
+  .panel {
+    background: var(--white);
+    border: 1px solid var(--hair-dark);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .panel h3 {
+    font-family: var(--serif);
+    font-size: 27px;
+    letter-spacing: .5px;
+  }
+  .panel li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding-block: 9px;
+    border-bottom: 1px solid var(--hair-dark);
+    font-size: 15px;
+  }
+  .panel li:last-child { border-bottom: 0; }
+  .panel li svg { flex: none; color: var(--gold-deep); margin-top: 3px; }
+  .panel__foot { font-size: 13px; color: var(--slate); }
+
+  /* ---------- cierre ---------- */
+  .closing { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+  .closing h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(30px, 5vw, 50px);
+    line-height: 1.15;
+    max-width: 18ch;
+  }
+  .closing__phone {
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .closing__phone:hover { color: var(--ivory); }
+
+  /* ---------- footer ---------- */
+  .site-footer { background: var(--night); color: var(--pearl); border-top: 1px solid var(--hair-gold); }
+  .site-footer__in {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 34px;
+    padding-block: 52px;
+  }
+  .site-footer h4 {
+    margin: 0 0 14px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .site-footer a { color: var(--pearl); text-decoration: none; font-size: 14px; }
+  .site-footer a:hover { color: var(--ivory); }
+  .site-footer li { padding-block: 5px; }
+  .footer-social { display: flex; gap: 12px; margin-top: 4px; }
+  .footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--hair-gold);
+    border-radius: 2px;
+    color: var(--gold);
+  }
+  .footer-social a:hover { background: rgba(201, 169, 106, 0.12); color: var(--ivory); }
+  .legal {
+    border-top: 1px solid rgba(201, 169, 106, 0.18);
+    padding-block: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  /* ---------- carrito ---------- */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 25, 41, 0.6);
+    z-index: 60;
+  }
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(420px, 92vw);
+    background: var(--navy);
+    color: var(--ivory);
+    border-left: 1px solid var(--hair-gold);
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .drawer__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--hair-gold);
+  }
+  .drawer__title { font-family: var(--serif); font-size: 26px; letter-spacing: 2px; }
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid var(--hair-gold);
+    border-radius: 2px;
+    color: var(--gold);
+    cursor: pointer;
+  }
+  .icon-btn:hover { background: rgba(201, 169, 106, 0.12); }
+  .drawer__body { flex: 1; overflow-y: auto; padding: 8px 24px; }
+  .drawer__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    color: var(--pearl);
+    padding-block: 56px;
+    font-size: 15px;
+  }
+  .line {
+    display: flex;
+    gap: 14px;
+    padding-block: 18px;
+    border-bottom: 1px solid rgba(201, 169, 106, 0.18);
+  }
+  .line__thumb {
+    flex: none;
+    width: 56px;
+    height: 70px;
+    background: var(--night);
+    border: 1px solid var(--hair-gold);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .line__thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .line__info { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .line__name { font-family: var(--serif); font-size: 19px; line-height: 1.2; }
+  .line__price { font-size: 13px; color: var(--gold); font-variant-numeric: tabular-nums; }
+  .qty { display: flex; align-items: center; gap: 4px; margin-top: 4px; }
+  .qty button {
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    border: 1px solid var(--hair-gold);
+    color: var(--ivory);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .qty button:hover { background: rgba(201, 169, 106, 0.14); }
+  .qty__n { min-width: 34px; text-align: center; font-size: 15px; font-variant-numeric: tabular-nums; }
+  .line__remove {
+    background: transparent;
+    border: 0;
+    color: var(--pearl);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 6px 0;
+    align-self: flex-start;
+  }
+  .line__remove:hover { color: var(--gold); }
+  .drawer__foot {
+    border-top: 1px solid var(--hair-gold);
+    padding: 22px 24px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .total {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .total__l { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--pearl); }
+  .total__v { font-family: var(--serif); font-size: 28px; color: var(--gold); font-variant-numeric: tabular-nums; }
+  .drawer__foot .btn { width: 100%; }
+  .drawer__fine { font-size: 12px; color: var(--pearl); text-align: center; }
+
+  /* ---------- WhatsApp flotante ---------- */
+  .fab {
+    position: fixed;
+    right: 18px;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    z-index: 50;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 28px rgba(12, 25, 41, 0.32);
+  }
+  .fab:hover { background: #DBBE83; }
+  .fab__text { display: inline; }
+
+  @media (max-width: 860px) {
+    .nav { display: none; }
+  }
+  @media (max-width: 520px) {
+    .fab__text { display: none; }
+    .fab { padding: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+
+<div class="announce">
+  <div class="wrap announce__in">
+    <span>Envíos a toda Venezuela · Zoom y MRW</span>
+    <span class="announce__social">
+      <a href="https://instagram.com/Ellaparfum1" target="_blank" rel="noopener" aria-label="Instagram de ELLA PARFUM">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"></circle>
+        </svg>
+      </a>
+      <a href="https://www.tiktok.com/@Ellaparfum1" target="_blank" rel="noopener" aria-label="TikTok de ELLA PARFUM">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path>
+        </svg>
+      </a>
+      <a href="tel:+584121836763" aria-label="Llamar al 0412-183-6763">0412-183-6763</a>
+    </span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap site-header__in">
+    <a class="brand" href="#inicio">
+      <span class="medal" style="width:44px;height:44px;">
+        <span class="medal__ring"></span>
+        <span class="medal__mono" style="font-size:16px;">E<span class="medal__bar" style="height:12px;"></span>P</span>
+      </span>
+      <span>
+        <span class="brand__name">ELLA</span>
+        <span class="brand__sub">PARFUM</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Principal">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#como-comprar">Cómo comprar</a>
+      <a href="#envios">Envíos y pagos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <button class="cart-btn" id="cart-open" type="button" aria-label="Abrir carrito de compras">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 7h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 7Z"></path>
+        <path d="M9 7V5.6A3 3 0 0 1 12 3a3 3 0 0 1 3 2.6V7"></path>
+      </svg>
+      <span class="cart-btn__count" id="cart-count" hidden>0</span>
+    </button>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <section class="hero">
+    <div class="hero__frame"></div>
+    <span class="hero__corner" style="top:18px;left:18px;"></span>
+    <span class="hero__corner" style="top:18px;right:18px;"></span>
+    <span class="hero__corner" style="bottom:18px;left:18px;"></span>
+    <span class="hero__corner" style="bottom:18px;right:18px;"></span>
+
+    <div class="wrap hero__in">
+      <span class="eyebrow" style="color:var(--gold);">Perfumería online · Venezuela</span>
+
+      <span class="medal" style="width:96px;height:96px;">
+        <span class="medal__ring"></span>
+        <span class="medal__ring-in"></span>
+        <span class="medal__mono" style="font-size:34px;">E<span class="medal__bar" style="height:26px;"></span>P</span>
+      </span>
+
+      <h1>Perfumes originales, entregados en toda Venezuela</h1>
+
+      <p class="hero__sub">Elige tus fragancias, confirma tu pedido por WhatsApp y recíbelo por Zoom o MRW. Atención personal de principio a fin.</p>
+
+      <div class="rule-orn">
+        <span></span><span class="lozenge"></span><span></span>
+      </div>
+
+      <div class="hero__cta">
+        <a class="btn btn--gold" href="#catalogo">Ver catálogo</a>
+        <a class="btn btn--ghost" id="wa-hero" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      </div>
+
+      <p class="hero__note">
+        <span class="lozenge" style="width:5px;height:5px;"></span>
+        Respuesta el mismo día
+        <span class="lozenge" style="width:5px;height:5px;"></span>
+      </p>
+    </div>
+  </section>
+
+  <section class="trust" aria-label="Por qué comprar con nosotras">
+    <div class="wrap" style="padding-inline:0;">
+      <div class="trust__grid">
+        <div class="trust__item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M8 12.5l2.5 2.5L16 9.5"></path>
+          </svg>
+          <span>
+            <span class="trust__t">100% originales</span>
+            <span class="trust__d">Fragancias selladas, tal como las ves.</span>
+          </span>
+        </div>
+        <div class="trust__item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="7" width="18" height="12" rx="1"></rect>
+            <path d="M3 11h18"></path>
+            <path d="M8 7V4h8v3"></path>
+          </svg>
+          <span>
+            <span class="trust__t">Envíos Zoom y MRW</span>
+            <span class="trust__d">A cualquier ciudad del país.</span>
+          </span>
+        </div>
+        <div class="trust__item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="5" y="10" width="14" height="9" rx="2"></rect>
+            <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+          </svg>
+          <span>
+            <span class="trust__t">Pago seguro</span>
+            <span class="trust__d">Confirmas y pagas antes de despachar.</span>
+          </span>
+        </div>
+        <div class="trust__item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5Z"></path>
+          </svg>
+          <span>
+            <span class="trust__t">Atención por WhatsApp</span>
+            <span class="trust__d">Te asesoramos antes de comprar.</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band--ivory" id="catalogo">
+    <div class="wrap band__in">
+      <div class="section-head">
+        <span class="eyebrow" style="color:var(--gold-deep);">Catálogo</span>
+        <span class="section-head__line"></span>
+      </div>
+      <h2 class="section-title">Nuestras fragancias</h2>
+      <p class="section-lead">Agrega las que te gusten al carrito y envíanos el pedido por WhatsApp. Te confirmamos disponibilidad, total y envío en minutos.</p>
+
+      <div class="grid-products" id="grid-products"></div>
+    </div>
+  </section>
+
+  <section class="band--navy" id="como-comprar">
+    <div class="wrap band__in">
+      <div class="section-head">
+        <span class="eyebrow" style="color:var(--gold);">Cómo comprar</span>
+        <span class="section-head__line"></span>
+      </div>
+      <h2 class="section-title">Tres pasos y es tuyo</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step__n">01</span>
+          <span class="step__t">Elige tus fragancias</span>
+          <span class="step__d">Agrégalas al carrito desde el catálogo. Puedes pedir varias en un mismo envío.</span>
+        </li>
+        <li class="step">
+          <span class="step__n">02</span>
+          <span class="step__t">Confirma por WhatsApp</span>
+          <span class="step__d">El carrito arma tu pedido y lo envía por WhatsApp. Te confirmamos disponibilidad, total y forma de pago.</span>
+        </li>
+        <li class="step">
+          <span class="step__n">03</span>
+          <span class="step__t">Recibe por Zoom o MRW</span>
+          <span class="step__d">Despachamos el mismo día que se confirma el pago y te pasamos el número de guía.</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band--ivory" id="envios">
+    <div class="wrap band__in">
+      <div class="section-head">
+        <span class="eyebrow" style="color:var(--gold-deep);">Envíos y pagos</span>
+        <span class="section-head__line"></span>
+      </div>
+      <h2 class="section-title">Cómo te llega y cómo pagas</h2>
+
+      <div class="duo">
+        <div class="panel">
+          <h3>Envíos</h3>
+          <ul>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4 4 10-10"></path></svg>
+              <span><strong style="font-weight:500;">Zoom</strong> y <strong style="font-weight:500;">MRW</strong> a toda Venezuela.</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4 4 10-10"></path></svg>
+              <span>Entrega estimada: <strong style="font-weight:500;">[1 a 3 días hábiles]</strong> según la ciudad.</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4 4 10-10"></path></svg>
+              <span>Costo del envío: <strong style="font-weight:500;">[a convenir / lo paga el cliente al recibir]</strong>.</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4 4 10-10"></path></svg>
+              <span>Te enviamos el número de guía apenas despachamos.</span>
+            </li>
+          </ul>
+          <p class="panel__foot">Entrega en mano disponible en <strong style="font-weight:500;">[tu ciudad]</strong>.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Pagos</h3>
+          <ul>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4 4 10-10"></path></svg>
+              <span><strong style="font-weight:500;">[Pago Móvil]</strong></span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4 4 10-10"></path></svg>
+              <span><strong style="font-weight:500;">[Transferencia bancaria]</strong></span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4 4 10-10"></path></svg>
+              <span><strong style="font-weight:500;">[Zelle]</strong></span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4 4 10-10"></path></svg>
+              <span><strong style="font-weight:500;">[Efectivo]</strong></span>
+            </li>
+          </ul>
+          <p class="panel__foot">Los datos de pago se envían por WhatsApp al confirmar tu pedido.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band--night" id="contacto">
+    <div class="wrap band__in">
+      <div class="closing">
+        <span class="medal" style="width:78px;height:78px;">
+          <span class="medal__ring"></span>
+          <span class="medal__ring-in"></span>
+          <span class="medal__mono" style="font-size:27px;">E<span class="medal__bar" style="height:21px;"></span>P</span>
+        </span>
+        <h2>¿Lista para tu próxima fragancia?</h2>
+        <p class="section-lead" style="text-align:center;margin-inline:auto;">Escríbenos y te ayudamos a elegir según lo que buscas: algo fresco para el día, algo intenso para la noche o un regalo.</p>
+        <a class="btn btn--gold" id="wa-closing" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a class="closing__phone" href="tel:+584121836763">0412-183-6763</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__in">
+    <div>
+      <span class="brand__name" style="font-size:28px;">ELLA</span>
+      <span class="brand__sub" style="margin-bottom:14px;">PARFUM</span>
+      <p style="font-size:14px;margin-top:14px;max-width:32ch;">Perfumería online en Venezuela. Fragancias originales con asesoría personal.</p>
+    </div>
+
+    <div>
+      <h4>Tienda</h4>
+      <ul>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#como-comprar">Cómo comprar</a></li>
+        <li><a href="#envios">Envíos y pagos</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+584121836763">0412-183-6763</a></li>
+        <li><a id="wa-footer" href="#" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="https://instagram.com/Ellaparfum1" target="_blank" rel="noopener">@Ellaparfum1 · Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@Ellaparfum1" target="_blank" rel="noopener">@Ellaparfum1 · TikTok</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Síguenos</h4>
+      <div class="footer-social">
+        <a href="https://instagram.com/Ellaparfum1" target="_blank" rel="noopener" aria-label="Instagram de ELLA PARFUM">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4.2"></circle>
+            <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@Ellaparfum1" target="_blank" rel="noopener" aria-label="TikTok de ELLA PARFUM">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path>
+          </svg>
+        </a>
+        <a id="wa-social" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap legal">
+    <span>© <span id="year">2026</span> ELLA PARFUM. Todos los derechos reservados.</span>
+    <span>Caracas · Venezuela</span>
+  </div>
+</footer>
+
+<a class="fab" id="wa-fab" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path>
+  </svg>
+  <span class="fab__text">WhatsApp</span>
+</a>
+
+<div class="overlay" id="overlay" hidden></div>
+
+<aside class="drawer" id="drawer" hidden aria-label="Carrito de compras">
+  <div class="drawer__head">
+    <span class="drawer__title">Tu pedido</span>
+    <button class="icon-btn" id="cart-close" type="button" aria-label="Cerrar carrito">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="drawer__body" id="drawer-body"></div>
+
+  <div class="drawer__foot">
+    <div class="total">
+      <span class="total__l">Total</span>
+      <span class="total__v" id="cart-total">—</span>
+    </div>
+    <button class="btn btn--gold" id="wa-order" type="button">Pedir por WhatsApp</button>
+    <p class="drawer__fine">Te confirmamos disponibilidad y envío por WhatsApp.</p>
+  </div>
+</aside>
+
+<script>
+  /* =========================================================
+     CATÁLOGO — aquí van los productos reales.
+     precio: número en dólares, o null si aún no está definido.
+     img: URL de la foto, o null para mostrar el marco de la marca.
+     ========================================================= */
+  var CATALOGO = [
+    { id: 'p1', nombre: '[Nombre del perfume 1]', notas: '[Notas: p. ej. floral · vainilla · ámbar]', tamano: '[100 ml]', precio: null, img: null },
+    { id: 'p2', nombre: '[Nombre del perfume 2]', notas: '[Notas: p. ej. cítrico · madera]', tamano: '[100 ml]', precio: null, img: null },
+    { id: 'p3', nombre: '[Nombre del perfume 3]', notas: '[Notas: p. ej. oriental · especiado]', tamano: '[50 ml]', precio: null, img: null },
+    { id: 'p4', nombre: '[Nombre del perfume 4]', notas: '[Notas: p. ej. frutal · almizcle]', tamano: '[100 ml]', precio: null, img: null },
+    { id: 'p5', nombre: '[Nombre del perfume 5]', notas: '[Notas: p. ej. fresco · acuático]', tamano: '[100 ml]', precio: null, img: null },
+    { id: 'p6', nombre: '[Nombre del perfume 6]', notas: '[Notas: p. ej. dulce · gourmand]', tamano: '[50 ml]', precio: null, img: null }
+  ];
+
+  var WHATSAPP = '584121836763';
+  var MONEDA = '$';
+
+  var carrito = {};
+  var ultimoFoco = null;
+
+  var grid = document.getElementById('grid-products');
+  var drawer = document.getElementById('drawer');
+  var overlay = document.getElementById('overlay');
+  var drawerBody = document.getElementById('drawer-body');
+  var cartCount = document.getElementById('cart-count');
+  var cartTotal = document.getElementById('cart-total');
+  var btnPedido = document.getElementById('wa-order');
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function precioTexto(p) {
+    return p === null || p === undefined ? '[Precio]' : MONEDA + Number(p).toFixed(2);
+  }
+
+  function medallon(tam, fuente) {
+    return '<span class="medal" style="width:' + tam + 'px;height:' + tam + 'px;opacity:.55;">' +
+      '<span class="medal__ring"></span>' +
+      '<span class="medal__mono" style="font-size:' + fuente + 'px;">E<span class="medal__bar" style="height:' + Math.round(fuente * 0.76) + 'px;"></span>P</span>' +
+      '</span>';
+  }
+
+  function guardar() {
+    try { localStorage.setItem('ella_carrito', JSON.stringify(carrito)); } catch (e) { /* sin almacenamiento */ }
+  }
+
+  function restaurar() {
+    try {
+      var raw = localStorage.getItem('ella_carrito');
+      if (raw) carrito = JSON.parse(raw) || {};
+    } catch (e) { carrito = {}; }
+  }
+
+  function producto(id) {
+    for (var i = 0; i < CATALOGO.length; i++) {
+      if (CATALOGO[i].id === id) return CATALOGO[i];
+    }
+    return null;
+  }
+
+  function unidades() {
+    var n = 0;
+    for (var id in carrito) { n += carrito[id]; }
+    return n;
+  }
+
+  function pintarCatalogo() {
+    var html = '';
+    for (var i = 0; i < CATALOGO.length; i++) {
+      var p = CATALOGO[i];
+      var media = p.img
+        ? '<img src="' + p.img + '" alt="' + p.nombre + '">'
+        : '<span class="card__ph">' + medallon(58, 20) + '<span class="card__ph-label">[FOTO]</span></span>';
+
+      html += '<article class="card">' +
+        '<div class="card__media">' + media + '</div>' +
+        '<div class="card__body">' +
+          '<h3 class="card__name">' + p.nombre + '</h3>' +
+          '<p class="card__notes">' + p.notas + '</p>' +
+          '<div class="card__meta">' +
+            '<span class="card__price">' + precioTexto(p.precio) + '</span>' +
+            '<span class="card__size">' + p.tamano + '</span>' +
+          '</div>' +
+          '<button class="btn btn--outline-dark" type="button" data-add="' + p.id + '">Agregar</button>' +
+        '</div>' +
+      '</article>';
+    }
+    grid.innerHTML = html;
+  }
+
+  function pintarCarrito() {
+    var ids = Object.keys(carrito);
+    var total = 0;
+    var faltaPrecio = false;
+
+    if (!ids.length) {
+      drawerBody.innerHTML = '<div class="drawer__empty">' + medallon(64, 22) +
+        '<p>Tu carrito está vacío.</p>' +
+        '<a class="btn btn--ghost" href="#catalogo" data-close="1">Ver catálogo</a></div>';
+      cartTotal.textContent = '—';
+      btnPedido.disabled = true;
+    } else {
+      var html = '';
+      for (var i = 0; i < ids.length; i++) {
+        var p = producto(ids[i]);
+        if (!p) continue;
+        var cant = carrito[ids[i]];
+        if (p.precio === null || p.precio === undefined) { faltaPrecio = true; } else { total += p.precio * cant; }
+
+        var thumb = p.img
+          ? '<img src="' + p.img + '" alt="">'
+          : medallon(34, 12);
+
+        html += '<div class="line">' +
+          '<div class="line__thumb">' + thumb + '</div>' +
+          '<div class="line__info">' +
+            '<span class="line__name">' + p.nombre + '</span>' +
+            '<span class="line__price">' + precioTexto(p.precio) + ' · ' + p.tamano + '</span>' +
+            '<div class="qty">' +
+              '<button type="button" data-menos="' + p.id + '" aria-label="Quitar una unidad de ' + p.nombre + '">−</button>' +
+              '<span class="qty__n">' + cant + '</span>' +
+              '<button type="button" data-mas="' + p.id + '" aria-label="Agregar una unidad de ' + p.nombre + '">+</button>' +
+            '</div>' +
+            '<button class="line__remove" type="button" data-quitar="' + p.id + '">Eliminar</button>' +
+          '</div>' +
+        '</div>';
+      }
+      drawerBody.innerHTML = html;
+      cartTotal.textContent = faltaPrecio ? 'A confirmar' : MONEDA + total.toFixed(2);
+      btnPedido.disabled = false;
+    }
+
+    var n = unidades();
+    cartCount.textContent = n;
+    cartCount.hidden = n === 0;
+    guardar();
+  }
+
+  function agregar(id) {
+    carrito[id] = (carrito[id] || 0) + 1;
+    pintarCarrito();
+    abrirCarrito();
+  }
+
+  function abrirCarrito() {
+    ultimoFoco = document.activeElement;
+    drawer.hidden = false;
+    overlay.hidden = false;
+    document.getElementById('cart-close').focus();
+  }
+
+  function cerrarCarrito() {
+    drawer.hidden = true;
+    overlay.hidden = true;
+    if (ultimoFoco && ultimoFoco.focus) ultimoFoco.focus();
+  }
+
+  function mensajePedido() {
+    var ids = Object.keys(carrito);
+    var lineas = ['Hola ELLA PARFUM, quiero hacer este pedido:', ''];
+    var total = 0;
+    var faltaPrecio = false;
+
+    for (var i = 0; i < ids.length; i++) {
+      var p = producto(ids[i]);
+      if (!p) continue;
+      var cant = carrito[ids[i]];
+      if (p.precio === null || p.precio === undefined) {
+        faltaPrecio = true;
+        lineas.push('• ' + cant + ' x ' + p.nombre + ' (' + p.tamano + ')');
+      } else {
+        total += p.precio * cant;
+        lineas.push('• ' + cant + ' x ' + p.nombre + ' (' + p.tamano + ') — ' + MONEDA + (p.precio * cant).toFixed(2));
+      }
+    }
+
+    lineas.push('');
+    lineas.push(faltaPrecio ? 'Por favor confírmenme disponibilidad y total.' : 'Total: ' + MONEDA + total.toFixed(2));
+    lineas.push('Mi envío sería por: (Zoom / MRW)');
+    return lineas.join('\n');
+  }
+
+  function enlaceWhatsApp(texto) {
+    return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto);
+  }
+
+  var saludo = 'Hola ELLA PARFUM, quiero información sobre sus fragancias.';
+  var enlacesFijos = ['wa-hero', 'wa-closing', 'wa-footer', 'wa-fab', 'wa-social'];
+  for (var i = 0; i < enlacesFijos.length; i++) {
+    var el = document.getElementById(enlacesFijos[i]);
+    if (el) el.href = enlaceWhatsApp(saludo);
+  }
+
+  document.addEventListener('click', function (ev) {
+    var t = ev.target.closest('[data-add], [data-mas], [data-menos], [data-quitar], [data-close]');
+    if (!t) return;
+
+    if (t.hasAttribute('data-add')) { agregar(t.getAttribute('data-add')); return; }
+    if (t.hasAttribute('data-mas')) { carrito[t.getAttribute('data-mas')]++; pintarCarrito(); return; }
+    if (t.hasAttribute('data-menos')) {
+      var idm = t.getAttribute('data-menos');
+      carrito[idm]--;
+      if (carrito[idm] <= 0) delete carrito[idm];
+      pintarCarrito();
+      return;
+    }
+    if (t.hasAttribute('data-quitar')) { delete carrito[t.getAttribute('data-quitar')]; pintarCarrito(); return; }
+    if (t.hasAttribute('data-close')) { cerrarCarrito(); return; }
+  });
+
+  document.getElementById('cart-open').addEventListener('click', abrirCarrito);
+  document.getElementById('cart-close').addEventListener('click', cerrarCarrito);
+  overlay.addEventListener('click', cerrarCarrito);
+
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape' && !drawer.hidden) cerrarCarrito();
+  });
+
+  btnPedido.addEventListener('click', function () {
+    if (!Object.keys(carrito).length) return;
+    window.open(enlaceWhatsApp(mensajePedido()), '_blank', 'noopener');
+  });
+
+  restaurar();
+  pintarCatalogo();
+  pintarCarrito();
+</script>
