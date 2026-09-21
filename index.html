@@ -357,6 +357,146 @@
   }
   .card__size { font-size: 12px; letter-spacing: 2px; color: var(--slate); text-transform: uppercase; }
   .card .btn { width: 100%; margin-top: 14px; }
+  .card__art { height: 76%; width: auto; }
+  .card__brand {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+  .card__top {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .chip {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: 1px solid var(--hair-gold);
+    color: var(--gold);
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* ---------- catálogo completo ---------- */
+  .lista-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 1px solid var(--hair-dark);
+  }
+  .lista-titulo { font-family: var(--serif); font-size: clamp(26px, 3.6vw, 34px); letter-spacing: .5px; }
+  .lista-conteo { font-size: 13px; color: var(--slate); }
+  .filtros {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .filtro {
+    min-height: 40px;
+    padding: 9px 18px;
+    background: transparent;
+    border: 1px solid rgba(19, 37, 63, 0.24);
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+    cursor: pointer;
+  }
+  .filtro:hover { border-color: var(--navy); }
+  .filtro[aria-pressed="true"] { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
+  .buscar {
+    flex: 1;
+    min-width: 200px;
+    min-height: 40px;
+    padding: 9px 16px;
+    background: var(--white);
+    border: 1px solid var(--hair-dark);
+    border-radius: 2px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--navy);
+  }
+  .buscar::placeholder { color: var(--slate); }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .lista { margin-top: 26px; border-top: 1px solid var(--hair-dark); }
+  .fila {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 8px 20px;
+    padding-block: 16px;
+    border-bottom: 1px solid var(--hair-dark);
+  }
+  .fila__nombre { font-family: var(--serif); font-size: 21px; line-height: 1.25; }
+  .fila__marca {
+    display: block;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .fila__meta { font-size: 13px; color: var(--slate); letter-spacing: .5px; }
+  .fila__precio {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    min-width: 88px;
+  }
+  .fila__btn {
+    min-height: 40px;
+    padding: 9px 18px;
+    background: transparent;
+    border: 1px solid rgba(19, 37, 63, 0.3);
+    border-radius: 2px;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+    cursor: pointer;
+  }
+  .fila__btn:hover { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
+  .lista__vacio { padding-block: 34px; color: var(--slate); font-size: 15px; }
+  @media (max-width: 680px) {
+    .fila {
+      grid-template-columns: 1fr auto;
+      row-gap: 10px;
+    }
+    .fila__nombre { grid-column: 1 / -1; }
+    .fila__meta { grid-column: 1; }
+    .fila__precio { grid-column: 2; text-align: right; }
+    .fila__btn { grid-column: 1 / -1; width: 100%; }
+  }
 
   /* ---------- pasos ---------- */
   .steps {
@@ -677,6 +817,106 @@
       <rect x="59.4" y="94.6" width="1.2" height="25" fill="#13253F" opacity=".85"></rect>
     </symbol>
 
+    <linearGradient id="g-yara" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C9749A"></stop>
+      <stop offset="26%" stop-color="#94406A"></stop>
+      <stop offset="58%" stop-color="#5E2242"></stop>
+      <stop offset="80%" stop-color="#43152E"></stop>
+      <stop offset="100%" stop-color="#8E3B63"></stop>
+    </linearGradient>
+    <linearGradient id="g-cloud" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E7F4FB"></stop>
+      <stop offset="28%" stop-color="#BBDDEE"></stop>
+      <stop offset="60%" stop-color="#7FB2D0"></stop>
+      <stop offset="82%" stop-color="#5E93B4"></stop>
+      <stop offset="100%" stop-color="#C6E3F2"></stop>
+    </linearGradient>
+    <linearGradient id="g-hawas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6E9FCE"></stop>
+      <stop offset="26%" stop-color="#36679C"></stop>
+      <stop offset="58%" stop-color="#173C68"></stop>
+      <stop offset="80%" stop-color="#0D2647"></stop>
+      <stop offset="100%" stop-color="#4379AD"></stop>
+    </linearGradient>
+    <linearGradient id="g-cdn" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4E80B8"></stop>
+      <stop offset="26%" stop-color="#22528B"></stop>
+      <stop offset="58%" stop-color="#0E3160"></stop>
+      <stop offset="82%" stop-color="#071D3C"></stop>
+      <stop offset="100%" stop-color="#2F62A0"></stop>
+    </linearGradient>
+    <linearGradient id="g-silver" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6E7B8A"></stop>
+      <stop offset="18%" stop-color="#E8EDF2"></stop>
+      <stop offset="45%" stop-color="#AEBBC8"></stop>
+      <stop offset="74%" stop-color="#77848F"></stop>
+      <stop offset="100%" stop-color="#525E6B"></stop>
+    </linearGradient>
+    <linearGradient id="g-cream" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#C9BFA9"></stop>
+      <stop offset="20%" stop-color="#FFFDF7"></stop>
+      <stop offset="52%" stop-color="#EFE7D6"></stop>
+      <stop offset="80%" stop-color="#CFC4AE"></stop>
+      <stop offset="100%" stop-color="#A99E88"></stop>
+    </linearGradient>
+    <linearGradient id="g-onyx" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1A2536"></stop>
+      <stop offset="20%" stop-color="#4A5A70"></stop>
+      <stop offset="52%" stop-color="#26334A"></stop>
+      <stop offset="82%" stop-color="#111A28"></stop>
+      <stop offset="100%" stop-color="#070D16"></stop>
+    </linearGradient>
+
+    <symbol id="art-yara" viewBox="0 0 120 170">
+      <ellipse cx="60" cy="161" rx="35" ry="5" fill="#03080F" opacity=".45"></ellipse>
+      <rect x="48" y="9" width="24" height="23" rx="2.5" fill="url(#fl-cap)"></rect>
+      <rect x="51" y="12" width="4" height="17" rx="2" fill="#FFF8E7" opacity=".42"></rect>
+      <rect x="50" y="32" width="20" height="7" rx="1.5" fill="url(#fl-cap)"></rect>
+      <path d="M52 39 L68 39 L68 49 C88 54 100 71 100 97 C100 130 82 156 60 156 C38 156 20 130 20 97 C20 71 32 54 52 49 Z" fill="url(#g-yara)"></path>
+      <path d="M22 116 C29 141 43 156 60 156 C77 156 91 141 98 116 Z" fill="#2B0C1D" opacity=".35"></path>
+      <path d="M38 70 C31 81 29 93 29 104 C29 121 33 135 41 145" stroke="#FFE7F1" stroke-opacity=".4" stroke-width="5" stroke-linecap="round" fill="none"></path>
+      <path d="M90 94 C90 116 85 134 76 145" stroke="#1E0715" stroke-opacity=".35" stroke-width="4" stroke-linecap="round" fill="none"></path>
+      <path d="M52 39 L68 39 L68 49 C88 54 100 71 100 97 C100 130 82 156 60 156 C38 156 20 130 20 97 C20 71 32 54 52 49 Z" fill="none" stroke="#F2C9DC" stroke-opacity=".4" stroke-width="1.2"></path>
+    </symbol>
+
+    <symbol id="art-cloud" viewBox="0 0 120 170">
+      <ellipse cx="60" cy="161" rx="33" ry="5" fill="#03080F" opacity=".42"></ellipse>
+      <rect x="52" y="26" width="16" height="22" fill="url(#g-cloud)"></rect>
+      <rect x="40" y="6" width="40" height="22" rx="9" fill="url(#g-cream)"></rect>
+      <rect x="45" y="10" width="6" height="14" rx="3" fill="#FFFFFF" opacity=".55"></rect>
+      <path d="M22 62 Q22 46 38 46 L82 46 Q98 46 98 62 L98 140 Q98 156 82 156 L38 156 Q22 156 22 140 Z" fill="url(#g-cloud)"></path>
+      <path d="M22 112 L98 112 L98 140 Q98 156 82 156 L38 156 Q22 156 22 140 Z" fill="#2E5C7A" opacity=".28"></path>
+      <path d="M33 62 C30 72 30 86 30 96 L30 140" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="5" stroke-linecap="round" fill="none"></path>
+      <path d="M89 74 L89 134" stroke="#18425E" stroke-opacity=".3" stroke-width="4" stroke-linecap="round" fill="none"></path>
+      <path d="M22 62 Q22 46 38 46 L82 46 Q98 46 98 62 L98 140 Q98 156 82 156 L38 156 Q22 156 22 140 Z" fill="none" stroke="#FFFFFF" stroke-opacity=".45" stroke-width="1.2"></path>
+    </symbol>
+
+    <symbol id="art-hawas" viewBox="0 0 120 170">
+      <ellipse cx="60" cy="161" rx="31" ry="4.5" fill="#03080F" opacity=".45"></ellipse>
+      <rect x="46" y="6" width="28" height="25" rx="2" fill="url(#g-silver)"></rect>
+      <rect x="49" y="9" width="4.5" height="19" rx="2" fill="#FFFFFF" opacity=".55"></rect>
+      <rect x="49" y="31" width="22" height="7" rx="1.5" fill="url(#g-silver)"></rect>
+      <path d="M50 38 L70 38 L70 45 L88 57 L88 147 Q88 156 79 156 L41 156 Q32 156 32 147 L32 57 L50 45 Z" fill="url(#g-hawas)"></path>
+      <path d="M32 120 L88 120 L88 147 Q88 156 79 156 L41 156 Q32 156 32 147 Z" fill="#061627" opacity=".4"></path>
+      <path d="M40 64 L40 140" stroke="#DCEBFA" stroke-opacity=".42" stroke-width="5" stroke-linecap="round" fill="none"></path>
+      <path d="M80 70 L80 142" stroke="#04101F" stroke-opacity=".4" stroke-width="4" stroke-linecap="round" fill="none"></path>
+      <path d="M50 38 L70 38 L70 45 L88 57 L88 147 Q88 156 79 156 L41 156 Q32 156 32 147 L32 57 L50 45 Z" fill="none" stroke="#BBD6EE" stroke-opacity=".4" stroke-width="1.2"></path>
+    </symbol>
+
+    <symbol id="art-cdn" viewBox="0 0 120 170">
+      <ellipse cx="60" cy="161" rx="30" ry="4.5" fill="#03080F" opacity=".45"></ellipse>
+      <rect x="44" y="5" width="32" height="27" rx="1.5" fill="url(#g-onyx)"></rect>
+      <rect x="44" y="25" width="32" height="4" fill="url(#fl-cap)"></rect>
+      <rect x="47" y="8" width="5" height="15" rx="2.5" fill="#FFFFFF" opacity=".3"></rect>
+      <rect x="50" y="32" width="20" height="7" rx="1" fill="url(#g-onyx)"></rect>
+      <path d="M50 39 L70 39 L70 46 L86 54 L86 150 Q86 156 80 156 L40 156 Q34 156 34 150 L34 54 L50 46 Z" fill="url(#g-cdn)"></path>
+      <path d="M34 124 L86 124 L86 150 Q86 156 80 156 L40 156 Q34 156 34 150 Z" fill="#04122A" opacity=".42"></path>
+      <path d="M42 62 L42 142" stroke="#CFE2F8" stroke-opacity=".4" stroke-width="5" stroke-linecap="round" fill="none"></path>
+      <path d="M78 68 L78 144" stroke="#030C1C" stroke-opacity=".42" stroke-width="4" stroke-linecap="round" fill="none"></path>
+      <rect x="34" y="88" width="52" height="1.4" fill="#C9A96A" opacity=".65"></rect>
+      <path d="M50 39 L70 39 L70 46 L86 54 L86 150 Q86 156 80 156 L40 156 Q34 156 34 150 L34 54 L50 46 Z" fill="none" stroke="#A8C6E6" stroke-opacity=".38" stroke-width="1.2"></path>
+    </symbol>
+
     <symbol id="flacon-mini" viewBox="0 0 120 170">
       <rect x="46" y="7" width="28" height="29" rx="3" fill="url(#fl-cap)"></rect>
       <rect x="50" y="11" width="4.6" height="21" rx="2.3" fill="#FFF8E7" opacity=".4"></rect>
@@ -824,10 +1064,26 @@
         <span class="eyebrow" style="color:var(--gold-deep);">Catálogo</span>
         <span class="section-head__line"></span>
       </div>
-      <h2 class="section-title">Nuestras fragancias</h2>
+      <h2 class="section-title">Las más pedidas</h2>
       <p class="section-lead">Agrega las que te gusten al carrito y envíanos el pedido por WhatsApp. Te confirmamos disponibilidad, total y envío en minutos.</p>
 
       <div class="grid-products" id="grid-products"></div>
+
+      <div class="lista-head">
+        <h2 class="lista-titulo">Catálogo completo</h2>
+        <span class="lista-conteo" id="lista-conteo"></span>
+      </div>
+
+      <div class="filtros">
+        <button class="filtro" type="button" data-filtro="Todas" aria-pressed="true">Todas</button>
+        <button class="filtro" type="button" data-filtro="Mujer" aria-pressed="false">Mujer</button>
+        <button class="filtro" type="button" data-filtro="Hombre" aria-pressed="false">Hombre</button>
+        <button class="filtro" type="button" data-filtro="Unisex" aria-pressed="false">Unisex</button>
+        <label class="sr-only" for="buscar">Buscar fragancia o marca</label>
+        <input class="buscar" id="buscar" type="search" placeholder="Buscar por marca o nombre…" autocomplete="off">
+      </div>
+
+      <ul class="lista" id="lista-catalogo"></ul>
     </div>
   </section>
 
@@ -1025,10 +1281,51 @@
      img: URL de la foto, o null para mostrar el marco de la marca.
      ========================================================= */
   var CATALOGO = [
-    { id: 'p1', nombre: '[Nombre del perfume 1]', notas: '[Notas: p. ej. floral · vainilla · ámbar]', tamano: '[100 ml]', precio: null, img: null },
-    { id: 'p2', nombre: '[Nombre del perfume 2]', notas: '[Notas: p. ej. cítrico · madera]', tamano: '[100 ml]', precio: null, img: null },
-    { id: 'p3', nombre: '[Nombre del perfume 3]', notas: '[Notas: p. ej. oriental · especiado]', tamano: '[50 ml]', precio: null, img: null },
-    { id: 'p4', nombre: '[Nombre del perfume 4]', notas: '[Notas: p. ej. frutal · almizcle]', tamano: '[100 ml]', precio: null, img: null }
+    { id: 'ZX_PE-LT-W-346531', marca: 'Lattafa', nombre: 'Yara Elixir', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null, destacado: true, arte: 'art-yara', notas: 'Dulce y envolvente, de estela larga. La más pedida entre las mujeres.' },
+    { id: 'ZX_PE-AR-W-022389', marca: 'Ariana Grande', nombre: 'Cloud', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null, destacado: true, arte: 'art-cloud', notas: 'Cremoso y suave, con lavanda y coco. Ideal para el día a día.' },
+    { id: 'ZX_PE-RA-M-331026', marca: 'Rasasi', nombre: 'Hawas', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null, destacado: true, arte: 'art-hawas', notas: 'Fresco y acuático, con cítricos y ámbar. Un clásico de oficina.' },
+    { id: 'ZX_PE-AU-M-164152', marca: 'Armaf', nombre: 'Club de Nuit Blue Iconic', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null, destacado: true, arte: 'art-cdn', notas: 'Cítrico amaderado, elegante y con presencia. Rinde todo el día.' },
+
+    { id: 'ZX_PE-AFN-U-072836', marca: 'Afnan', nombre: '9 AM Dive', ml: '100 ml', tipo: 'EDP', genero: 'Unisex', precio: null, img: null },
+    { id: 'ZX_PE-AB-M-737835', marca: 'Antonio Banderas', nombre: 'Blue Seduction', ml: '200 ml', tipo: 'EDT', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-AB-M-999332', marca: 'Antonio Banderas', nombre: 'The Icon', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-AB-M-109687', marca: 'Antonio Banderas', nombre: 'The Icon Supreme', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-AR-W-020301', marca: 'Ariana Grande', nombre: 'Ari', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-AU-W-801116', marca: 'Armaf', nombre: 'Club de Nuit Maleka', ml: '105 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-AU-M-102499', marca: 'Armaf', nombre: 'Hunter Intense', ml: '100 ml', tipo: 'EDT', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-AU-M-109313', marca: 'Armaf', nombre: 'Odyssey Homme Black', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-AU-M-149371', marca: 'Armaf', nombre: 'Odyssey Mandarin Sky', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-AU-U-807217', marca: 'Armaf', nombre: 'Odyssey Marshmallow', ml: '100 ml', tipo: 'EDP', genero: 'Unisex', precio: null, img: null },
+    { id: 'ZX_PE-AU-U-805787', marca: 'Armaf', nombre: 'Odyssey Revolution Ultra', ml: '100 ml', tipo: 'EDP', genero: 'Unisex', precio: null, img: null },
+    { id: 'ZX_PE-AU-M-094663', marca: 'Armaf', nombre: 'Tres Nuit', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-BHA-U-062769', marca: 'Bharara', nombre: 'Rome Imagine', ml: '100 ml', tipo: 'EDP', genero: 'Unisex', precio: null, img: null },
+    { id: 'ZX_PE-BHA-W-670336', marca: 'Bharara', nombre: 'Rome La Bomba', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-BHA-M-670480', marca: 'Bharara', nombre: 'Rome Intense', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-DG-W-020233', marca: 'Dolce & Gabbana', nombre: 'Light Blue', ml: '100 ml', tipo: 'EDT', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-DM-M-769565', marca: 'Dumont', nombre: 'Nitro Red Intensely', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-DM-M-761880', marca: 'Dumont', nombre: 'Nitro Red', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-DM-M-764171', marca: 'Dumont', nombre: 'Nitro White', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-EA-W-390600', marca: 'Elizabeth Arden', nombre: '5th Avenue', ml: '125 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-EMP-W-904865', marca: 'Emper', nombre: 'Set Mardora', ml: '100 ml + 20 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-GU-W-320513', marca: 'Guess', nombre: 'Guess', ml: '75 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-GU-W-320216', marca: 'Guess', nombre: 'Seductive Noir', ml: '75 ml', tipo: 'EDT', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-GU-W-000033', marca: 'Guess', nombre: 'Seductive Red', ml: '75 ml', tipo: 'EDT', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-HB-M-766775', marca: 'Hugo Boss', nombre: 'Unlimited', ml: '100 ml', tipo: 'EDT', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-JD-W-342016', marca: 'Jesús del Pozo', nombre: 'Halloween', ml: '100 ml', tipo: 'EDT', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-JO-M-000608', marca: 'Joop', nombre: 'Homme', ml: '125 ml', tipo: 'EDT', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-LT-M-346548', marca: 'Lattafa', nombre: 'Asad Elixir', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-LT-W-598970', marca: 'Lattafa', nombre: 'Mayar Natural Intense', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-LT-W-450605', marca: 'Lattafa', nombre: 'Qimmah', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-MA-U-160421', marca: 'Maison Alhambra', nombre: 'Jean Lowe Fantasme', ml: '100 ml', tipo: 'EDP', genero: 'Unisex', precio: null, img: null },
+    { id: 'ZX_PE-N-M-930722', marca: 'Nautica', nombre: 'Blue Sail', ml: '100 ml', tipo: 'EDT', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-N-M-531908', marca: 'Nautica', nombre: 'Voyage', ml: '100 ml', tipo: 'EDT', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-PH-W-517482', marca: 'Paris Hilton', nombre: 'Paris Hilton', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null },
+    { id: 'ZX_PE-PH-M-519769', marca: 'Paris Hilton', nombre: 'Paris Hilton', ml: '100 ml', tipo: 'EDT', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-PE-M-000551', marca: 'Perry Ellis', nombre: '360 Red', ml: '100 ml', tipo: 'EDT', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-RA-M-331040', marca: 'Rasasi', nombre: 'Hawas Ice', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-RA-M-331262', marca: 'Rasasi', nombre: 'Hawas Gold Digger', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null },
+    { id: 'ZX_PE-ZI-U-075622', marca: 'Zimaya', nombre: 'Tiramisu Caramel', ml: '100 ml', tipo: 'EDP', genero: 'Unisex', precio: null, img: null },
+    { id: 'ZX_PE-ZI-W-077510', marca: 'Zimaya', nombre: "Tiramisu S'mores", ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null }
   ];
 
   var WHATSAPP = '584121836763';
@@ -1044,11 +1341,23 @@
   var cartCount = document.getElementById('cart-count');
   var cartTotal = document.getElementById('cart-total');
   var btnPedido = document.getElementById('wa-order');
+  var lista = document.getElementById('lista-catalogo');
+  var conteo = document.getElementById('lista-conteo');
+  var buscar = document.getElementById('buscar');
+  var filtroGenero = 'Todas';
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
   function precioTexto(p) {
-    return p === null || p === undefined ? '[Precio]' : MONEDA + Number(p).toFixed(2);
+    return p === null || p === undefined ? 'Consultar' : MONEDA + Number(p).toFixed(2);
+  }
+
+  function medida(p) {
+    return p.ml + ' · ' + p.tipo;
+  }
+
+  function titulo(p) {
+    return p.marca + ' ' + p.nombre;
   }
 
   function flacon(alto, conLetras) {
@@ -1086,24 +1395,59 @@
     var html = '';
     for (var i = 0; i < CATALOGO.length; i++) {
       var p = CATALOGO[i];
-      var media = p.img
-        ? '<img src="' + p.img + '" alt="' + p.nombre + '">'
-        : '<span class="card__ph">' + flacon(120) + '<span class="card__ph-label">[FOTO]</span></span>';
+      if (!p.destacado) continue;
+
+      var media;
+      if (p.img) {
+        media = '<img src="' + p.img + '" alt="' + titulo(p) + '">';
+      } else if (p.arte) {
+        media = '<svg class="card__art" viewBox="0 0 120 170" aria-hidden="true"><use href="#' + p.arte + '"></use></svg>';
+      } else {
+        media = '<span class="card__ph">' + flacon(120) + '<span class="card__ph-label">[FOTO]</span></span>';
+      }
 
       html += '<article class="card">' +
-        '<div class="card__media">' + media + '</div>' +
+        '<div class="card__media">' + media +
+          '<div class="card__top"><span class="chip">' + p.genero + '</span></div>' +
+        '</div>' +
         '<div class="card__body">' +
+          '<span class="card__brand">' + p.marca + '</span>' +
           '<h3 class="card__name">' + p.nombre + '</h3>' +
           '<p class="card__notes">' + p.notas + '</p>' +
           '<div class="card__meta">' +
             '<span class="card__price">' + precioTexto(p.precio) + '</span>' +
-            '<span class="card__size">' + p.tamano + '</span>' +
+            '<span class="card__size">' + medida(p) + '</span>' +
           '</div>' +
           '<button class="btn btn--outline-dark" type="button" data-add="' + p.id + '">Agregar</button>' +
         '</div>' +
       '</article>';
     }
     grid.innerHTML = html;
+  }
+
+  function pintarLista() {
+    var texto = (buscar.value || '').trim().toLowerCase();
+    var html = '';
+    var visibles = 0;
+
+    for (var i = 0; i < CATALOGO.length; i++) {
+      var p = CATALOGO[i];
+      if (filtroGenero !== 'Todas' && p.genero !== filtroGenero) continue;
+      if (texto && titulo(p).toLowerCase().indexOf(texto) === -1) continue;
+      visibles++;
+
+      html += '<li class="fila">' +
+        '<span class="fila__nombre"><span class="fila__marca">' + p.marca + '</span>' + p.nombre + '</span>' +
+        '<span class="fila__meta">' + medida(p) + ' · ' + p.genero + '</span>' +
+        '<span class="fila__precio">' + precioTexto(p.precio) + '</span>' +
+        '<button class="fila__btn" type="button" data-add="' + p.id + '">Agregar</button>' +
+      '</li>';
+    }
+
+    lista.innerHTML = html || '<li class="lista__vacio">No encontramos esa fragancia. Escríbenos por WhatsApp y la buscamos para ti.</li>';
+    conteo.textContent = visibles === CATALOGO.length
+      ? CATALOGO.length + ' fragancias disponibles'
+      : visibles + ' de ' + CATALOGO.length + ' fragancias';
   }
 
   function pintarCarrito() {
@@ -1125,19 +1469,24 @@
         var cant = carrito[ids[i]];
         if (p.precio === null || p.precio === undefined) { faltaPrecio = true; } else { total += p.precio * cant; }
 
-        var thumb = p.img
-          ? '<img src="' + p.img + '" alt="">'
-          : flacon(54, false);
+        var thumb;
+        if (p.img) {
+          thumb = '<img src="' + p.img + '" alt="">';
+        } else if (p.arte) {
+          thumb = '<svg width="38" height="54" viewBox="0 0 120 170" aria-hidden="true"><use href="#' + p.arte + '"></use></svg>';
+        } else {
+          thumb = flacon(54, false);
+        }
 
         html += '<div class="line">' +
           '<div class="line__thumb">' + thumb + '</div>' +
           '<div class="line__info">' +
-            '<span class="line__name">' + p.nombre + '</span>' +
-            '<span class="line__price">' + precioTexto(p.precio) + ' · ' + p.tamano + '</span>' +
+            '<span class="line__name">' + titulo(p) + '</span>' +
+            '<span class="line__price">' + precioTexto(p.precio) + ' · ' + medida(p) + '</span>' +
             '<div class="qty">' +
-              '<button type="button" data-menos="' + p.id + '" aria-label="Quitar una unidad de ' + p.nombre + '">−</button>' +
+              '<button type="button" data-menos="' + p.id + '" aria-label="Quitar una unidad de ' + titulo(p) + '">−</button>' +
               '<span class="qty__n">' + cant + '</span>' +
-              '<button type="button" data-mas="' + p.id + '" aria-label="Agregar una unidad de ' + p.nombre + '">+</button>' +
+              '<button type="button" data-mas="' + p.id + '" aria-label="Agregar una unidad de ' + titulo(p) + '">+</button>' +
             '</div>' +
             '<button class="line__remove" type="button" data-quitar="' + p.id + '">Eliminar</button>' +
           '</div>' +
@@ -1185,10 +1534,10 @@
       var cant = carrito[ids[i]];
       if (p.precio === null || p.precio === undefined) {
         faltaPrecio = true;
-        lineas.push('• ' + cant + ' x ' + p.nombre + ' (' + p.tamano + ')');
+        lineas.push('• ' + cant + ' x ' + titulo(p) + ' (' + medida(p) + ')');
       } else {
         total += p.precio * cant;
-        lineas.push('• ' + cant + ' x ' + p.nombre + ' (' + p.tamano + ') — ' + MONEDA + (p.precio * cant).toFixed(2));
+        lineas.push('• ' + cant + ' x ' + titulo(p) + ' (' + medida(p) + ') — ' + MONEDA + (p.precio * cant).toFixed(2));
       }
     }
 
@@ -1239,7 +1588,21 @@
     window.open(enlaceWhatsApp(mensajePedido()), '_blank', 'noopener');
   });
 
+  var botonesFiltro = document.querySelectorAll('.filtro');
+  for (var f = 0; f < botonesFiltro.length; f++) {
+    botonesFiltro[f].addEventListener('click', function (ev) {
+      filtroGenero = ev.currentTarget.getAttribute('data-filtro');
+      for (var k = 0; k < botonesFiltro.length; k++) {
+        botonesFiltro[k].setAttribute('aria-pressed', botonesFiltro[k] === ev.currentTarget ? 'true' : 'false');
+      }
+      pintarLista();
+    });
+  }
+
+  buscar.addEventListener('input', pintarLista);
+
   restaurar();
   pintarCatalogo();
+  pintarLista();
   pintarCarrito();
 </script>
