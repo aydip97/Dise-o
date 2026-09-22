@@ -526,6 +526,11 @@
     cursor: pointer;
   }
   .fila__btn:hover { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
+  .fila--agotado .fila__nombre,
+  .fila--agotado .fila__precio { opacity: .5; }
+  .agotado { color: var(--gold-deep); font-weight: 500; }
+  .chip--agotado { border-color: var(--gold); background: rgba(19, 37, 63, 0.75); }
+  .card__top { gap: 6px; }
   .lista__vacio { padding-block: 34px; color: var(--slate); font-size: 15px; }
   @media (max-width: 680px) {
     .fila {
@@ -1399,6 +1404,11 @@
   var WHATSAPP = '584121836763';
   var MONEDA = '$';
 
+  // El catálogo vivo se administra desde esta hoja de cálculo; si falla la
+  // lectura, la página se queda con la copia incluida arriba.
+  var HOJA_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ9qw0vYfH04suVsCutaB_32_DU-xJW9tN0LqSQ2cVjj-LGPX-TYb89M_HnQi8sLKf9Q0es5UqP_7Jo/pub?gid=571950080&single=true&output=csv';
+  var CATALOGO_INCLUIDO = CATALOGO;
+
   var carrito = {};
   var ultimoFoco = null;
 
@@ -1415,6 +1425,86 @@
   var filtroGenero = 'Todas';
 
   document.getElementById('year').textContent = new Date().getFullYear();
+
+
+  function sinAcentos(t) {
+    return String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
+  }
+
+  function esSi(v, porDefecto) {
+    var t = sinAcentos(v);
+    if (!t) return porDefecto;
+    return t === 'si' || t === 's' || t === 'x' || t === '1' || t === 'true' || t === 'yes';
+  }
+
+  function leerCSV(texto) {
+    var filas = [], fila = [], campo = '', comillas = false;
+    for (var i = 0; i < texto.length; i++) {
+      var c = texto.charAt(i);
+      if (comillas) {
+        if (c === '"') {
+          if (texto.charAt(i + 1) === '"') { campo += '"'; i++; } else { comillas = false; }
+        } else { campo += c; }
+      } else if (c === '"') {
+        comillas = true;
+      } else if (c === ',') {
+        fila.push(campo); campo = '';
+      } else if (c === '\n') {
+        fila.push(campo); filas.push(fila); fila = []; campo = '';
+      } else if (c !== '\r') {
+        campo += c;
+      }
+    }
+    if (campo !== '' || fila.length) { fila.push(campo); filas.push(fila); }
+    return filas.filter(function (f) { return f.join('').trim() !== ''; });
+  }
+
+  function aplicarHoja(texto) {
+    var filas = leerCSV(texto);
+    if (filas.length < 2) return false;
+
+    var enc = filas[0].map(sinAcentos);
+    var col = {};
+    ['sku', 'marca', 'nombre', 'tamano', 'tipo', 'genero', 'precio', 'disponible', 'destacado', 'foto']
+      .forEach(function (k) { col[k] = enc.indexOf(k); });
+    if (col.sku < 0 || col.nombre < 0) return false;
+
+    var previos = {};
+    CATALOGO_INCLUIDO.forEach(function (p) { previos[p.id] = p; });
+
+    function celda(fila, i) { return i >= 0 && fila[i] !== undefined ? String(fila[i]).trim() : ''; }
+
+    var nuevos = [];
+    for (var i = 1; i < filas.length; i++) {
+      var f = filas[i];
+      var sku = celda(f, col.sku);
+      var nombre = celda(f, col.nombre);
+      if (!sku || !nombre) continue;
+
+      var base = previos[sku] || {};
+      var precio = celda(f, col.precio).replace(/[^0-9.,]/g, '').replace(',', '.');
+      var foto = celda(f, col.foto);
+
+      nuevos.push({
+        id: sku,
+        marca: celda(f, col.marca) || base.marca || '',
+        nombre: nombre,
+        ml: celda(f, col.tamano) || base.ml || '',
+        tipo: celda(f, col.tipo) || base.tipo || '',
+        genero: celda(f, col.genero) || base.genero || 'Unisex',
+        precio: precio === '' ? null : Number(precio),
+        img: foto || base.img || null,
+        arte: base.arte || null,
+        notas: base.notas || '',
+        destacado: col.destacado >= 0 ? esSi(f[col.destacado], false) : !!base.destacado,
+        disponible: col.disponible >= 0 ? esSi(f[col.disponible], true) : true
+      });
+    }
+
+    if (!nuevos.length) return false;
+    CATALOGO = nuevos;
+    return true;
+  }
 
   function moneda(n) {
     return MONEDA + (Number.isInteger(n) ? n : Number(n).toFixed(2));
@@ -1468,6 +1558,7 @@
     for (var i = 0; i < CATALOGO.length; i++) {
       var p = CATALOGO[i];
       if (!p.destacado) continue;
+      var agotado = p.disponible === false;
 
       var media = p.arte
         ? '<svg class="card__art" viewBox="0 0 120 170" aria-hidden="true"><use href="#' + p.arte + '"></use></svg>'
@@ -1480,7 +1571,9 @@
 
       html += '<article class="card">' +
         '<div class="card__media">' + media +
-          '<div class="card__top"><span class="chip">' + p.genero + '</span></div>' +
+          '<div class="card__top">' +
+            (agotado ? '<span class="chip chip--agotado">Agotado</span>' : '') +
+            '<span class="chip">' + p.genero + '</span></div>' +
         '</div>' +
         '<div class="card__body">' +
           '<span class="card__brand">' + p.marca + '</span>' +
@@ -1490,7 +1583,9 @@
             '<span class="card__price">' + precioTexto(p.precio) + '</span>' +
             '<span class="card__size">' + medida(p) + '</span>' +
           '</div>' +
-          '<button class="btn btn--outline-dark" type="button" data-add="' + p.id + '">Agregar</button>' +
+          (agotado
+            ? '<a class="btn btn--outline-dark" href="' + enlaceWhatsApp('Hola ELLA PARFUM, ¿cuándo les llega ' + titulo(p) + '?') + '" target="_blank" rel="noopener">Consultar</a>'
+            : '<button class="btn btn--outline-dark" type="button" data-add="' + p.id + '">Agregar</button>') +
         '</div>' +
       '</article>';
     }
@@ -1512,11 +1607,15 @@
       if (texto && titulo(p).toLowerCase().indexOf(texto) === -1) continue;
       visibles++;
 
-      html += '<li class="fila">' +
+      var sinStock = p.disponible === false;
+      html += '<li class="fila' + (sinStock ? ' fila--agotado' : '') + '">' +
         '<span class="fila__nombre"><span class="fila__marca">' + p.marca + '</span>' + p.nombre + '</span>' +
-        '<span class="fila__meta">' + medida(p) + ' · ' + p.genero + '</span>' +
+        '<span class="fila__meta">' + medida(p) + ' · ' + p.genero +
+          (sinStock ? ' <b class="agotado">· Agotado</b>' : '') + '</span>' +
         '<span class="fila__precio">' + precioTexto(p.precio) + '</span>' +
-        '<button class="fila__btn" type="button" data-add="' + p.id + '">Agregar</button>' +
+        (sinStock
+          ? '<a class="fila__btn" href="' + enlaceWhatsApp('Hola ELLA PARFUM, ¿cuándo les llega ' + titulo(p) + '?') + '" target="_blank" rel="noopener">Consultar</a>'
+          : '<button class="fila__btn" type="button" data-add="' + p.id + '">Agregar</button>') +
       '</li>';
     }
 
@@ -1541,7 +1640,7 @@
       var html = '';
       for (var i = 0; i < ids.length; i++) {
         var p = producto(ids[i]);
-        if (!p) continue;
+        if (!p) { delete carrito[ids[i]]; continue; }
         var cant = carrito[ids[i]];
         if (p.precio === null || p.precio === undefined) { faltaPrecio = true; } else { total += p.precio * cant; }
 
@@ -1580,6 +1679,8 @@
   }
 
   function agregar(id) {
+    var p = producto(id);
+    if (!p || p.disponible === false) return;
     carrito[id] = (carrito[id] || 0) + 1;
     pintarCarrito();
     abrirCarrito();
@@ -1681,6 +1782,17 @@
   pintarCatalogo();
   pintarLista();
   pintarCarrito();
+
+  fetch(HOJA_CSV, { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+    .then(function (texto) {
+      if (aplicarHoja(texto)) {
+        pintarCatalogo();
+        pintarLista();
+        pintarCarrito();
+      }
+    })
+    .catch(function () { /* sin conexión con la hoja: queda el catálogo incluido */ });
 </script>
 
 </body>
