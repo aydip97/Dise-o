@@ -364,7 +364,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    padding: 20px;
+    background: #F7F7F5;
+    object-fit: contain;
   }
   .card__brand {
     font-size: 10px;
@@ -685,7 +687,7 @@
     place-items: center;
     overflow: hidden;
   }
-  .line__thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .line__thumb img { width: 100%; height: 100%; padding: 3px; background: #F7F7F5; object-fit: contain; }
   .line__info { flex: 1; display: flex; flex-direction: column; gap: 6px; }
   .line__name { font-family: var(--serif); font-size: 19px; line-height: 1.2; }
   .line__price { font-size: 13px; color: var(--gold); font-variant-numeric: tabular-nums; }
@@ -1289,10 +1291,10 @@
      img: URL de la foto, o null para mostrar el marco de la marca.
      ========================================================= */
   var CATALOGO = [
-    { id: 'ZX_PE-LT-W-346531', marca: 'Lattafa', nombre: 'Yara Elixir', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null, destacado: true, arte: 'art-yara', notas: 'Dulce y envolvente, de estela larga. La más pedida entre las mujeres.' },
-    { id: 'ZX_PE-AR-W-022389', marca: 'Ariana Grande', nombre: 'Cloud', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: null, destacado: true, arte: 'art-cloud', notas: 'Cremoso y suave, con lavanda y coco. Ideal para el día a día.' },
-    { id: 'ZX_PE-RA-M-331026', marca: 'Rasasi', nombre: 'Hawas', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null, destacado: true, arte: 'art-hawas', notas: 'Fresco y acuático, con cítricos y ámbar. Un clásico de oficina.' },
-    { id: 'ZX_PE-AU-M-164152', marca: 'Armaf', nombre: 'Club de Nuit Blue Iconic', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: null, destacado: true, arte: 'art-cdn', notas: 'Cítrico amaderado, elegante y con presencia. Rinde todo el día.' },
+    { id: 'ZX_PE-LT-W-346531', marca: 'Lattafa', nombre: 'Yara Elixir', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: 'img/yara-elixir.webp', destacado: true, arte: 'art-yara', notas: 'Dulce y envolvente, de estela larga. La más pedida entre las mujeres.' },
+    { id: 'ZX_PE-AR-W-022389', marca: 'Ariana Grande', nombre: 'Cloud', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: null, img: 'img/cloud.webp', destacado: true, arte: 'art-cloud', notas: 'Cremoso y suave, con lavanda y coco. Ideal para el día a día.' },
+    { id: 'ZX_PE-RA-M-331026', marca: 'Rasasi', nombre: 'Hawas', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: 'img/hawas.webp', destacado: true, arte: 'art-hawas', notas: 'Fresco y acuático, con cítricos y ámbar. Un clásico de oficina.' },
+    { id: 'ZX_PE-AU-M-164152', marca: 'Armaf', nombre: 'Club de Nuit Blue Iconic', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: null, img: 'img/club-de-nuit-blue-iconic.webp', destacado: true, arte: 'art-cdn', notas: 'Cítrico amaderado, elegante y con presencia. Rinde todo el día.' },
 
     { id: 'ZX_PE-AFN-U-072836', marca: 'Afnan', nombre: '9 AM Dive', ml: '100 ml', tipo: 'EDP', genero: 'Unisex', precio: null, img: null },
     { id: 'ZX_PE-AB-M-737835', marca: 'Antonio Banderas', nombre: 'Blue Seduction', ml: '200 ml', tipo: 'EDT', genero: 'Hombre', precio: null, img: null },
