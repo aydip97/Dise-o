@@ -1371,7 +1371,29 @@
     { id: 'ZX_PE-RA-M-331040', marca: 'Rasasi', nombre: 'Hawas Ice', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: 60, img: null },
     { id: 'ZX_PE-RA-M-331262', marca: 'Rasasi', nombre: 'Hawas Gold Digger', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: 65, img: null },
     { id: 'ZX_PE-ZI-U-075622', marca: 'Zimaya', nombre: 'Tiramisu Caramel', ml: '100 ml', tipo: 'EDP', genero: 'Unisex', precio: 45, img: null },
-    { id: 'ZX_PE-ZI-W-077510', marca: 'Zimaya', nombre: "Tiramisu S'mores", ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: 48, img: null }
+    { id: 'ZX_PE-ZI-W-077510', marca: 'Zimaya', nombre: "Tiramisu S'mores", ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: 48, img: null },
+    { id: '6290171002338', marca: 'Afnan', nombre: '9PM', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: 45, img: null },
+    { id: '6290171001614', marca: 'Afnan', nombre: 'Supremacy Noir', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: 45, img: null },
+    { id: 'EP-ag-sweet-like-candy', marca: 'Ariana Grande', nombre: 'Sweet Like Candy', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: 60, img: null },
+    { id: 'EP-armaf-cdn-intense', marca: 'Armaf', nombre: 'Club de Nuit Intense', ml: '105 ml', tipo: 'EDP', genero: 'Hombre', precio: 55, img: null },
+    { id: 'EP-armaf-lionheart-woman', marca: 'Armaf', nombre: 'Lionheart Woman', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: 68, img: null },
+    { id: 'EP-armaf-odyssey-homme-black-60', marca: 'Armaf', nombre: 'Odyssey Homme Black', ml: '60 ml', tipo: 'EDP', genero: 'Hombre', precio: 35, img: null },
+    { id: 'EP-britney-fantasy', marca: 'Britney Spears', nombre: 'Fantasy', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: 38, img: null },
+    { id: 'EP-emper-donna-intense', marca: 'Emper', nombre: 'Donna Intense by Stallion 53', ml: '100 ml + 20 ml', tipo: 'EDP', genero: 'Mujer', precio: 40, img: null },
+    { id: 'EP-emper-stallion-53', marca: 'Emper', nombre: 'Stallion 53', ml: '100 ml + 20 ml', tipo: 'EDP', genero: 'Hombre', precio: 40, img: null },
+    { id: 'EP-lattafa-eclaire', marca: 'Lattafa', nombre: 'Eclaire', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: 55, img: null },
+    { id: '6290350599168', marca: 'Lattafa', nombre: 'Yara Candy', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: 45, img: null },
+    { id: '6290360590738', marca: 'Maison Alhambra', nombre: 'Narissa Ambre', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: 25, img: null },
+    { id: 'EP-mast-rome-extradose', marca: 'Mast', nombre: 'Rome Extradose Pour Homme', ml: '100 ml', tipo: 'EDP', genero: 'Hombre', precio: 55, img: null },
+    { id: '810200670411', marca: 'Mast', nombre: 'Rome Melancholia Pour Femme', ml: '100 ml', tipo: 'EDP', genero: 'Mujer', precio: 55, img: null },
+    { id: '3661163904016', marca: 'Nautica', nombre: 'Nautica Clásico', ml: '100 ml', tipo: 'EDT', genero: 'Hombre', precio: 26, img: null },
+    { id: '6291107459325', marca: 'Philos', nombre: 'Centro', ml: '100 ml', tipo: 'EDP', genero: 'Unisex', precio: 30, img: null },
+    { id: '7640496670160', marca: 'Tommy Hilfiger', nombre: 'Tommy', ml: '100 ml', tipo: 'EDT', genero: 'Hombre', precio: 45, img: null },
+    { id: '7640496670139', marca: 'Tommy Hilfiger', nombre: 'Tommy Girl', ml: '100 ml', tipo: 'EDT', genero: 'Mujer', precio: 45, img: null },
+    { id: '8018365260757', marca: 'Versace', nombre: 'Blue Jeans', ml: '75 ml', tipo: 'EDT', genero: 'Hombre', precio: 34, img: null },
+    { id: '8018365270756', marca: 'Versace', nombre: 'Red Jeans', ml: '75 ml', tipo: 'EDT', genero: 'Mujer', precio: 38, img: null },
+    { id: '8033488156329', marca: 'Xerjoff', nombre: 'Erba Pura', ml: '100 ml', tipo: 'EDP', genero: 'Unisex', precio: null, img: null },
+    { id: '8054320904847', marca: 'Xerjoff', nombre: 'Coro', ml: '100 ml', tipo: 'EDP', genero: 'Unisex', precio: null, img: null }
   ];
 
   var WHATSAPP = '584121836763';
@@ -1480,8 +1502,12 @@
     var html = '';
     var visibles = 0;
 
-    for (var i = 0; i < CATALOGO.length; i++) {
-      var p = CATALOGO[i];
+    var ordenados = CATALOGO.slice().sort(function (a, b) {
+      return (a.marca + ' ' + a.nombre).localeCompare(b.marca + ' ' + b.nombre, 'es');
+    });
+
+    for (var i = 0; i < ordenados.length; i++) {
+      var p = ordenados[i];
       if (filtroGenero !== 'Todas' && p.genero !== filtroGenero) continue;
       if (texto && titulo(p).toLowerCase().indexOf(texto) === -1) continue;
       visibles++;
