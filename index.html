@@ -358,6 +358,14 @@
   .card__size { font-size: 12px; letter-spacing: 2px; color: var(--slate); text-transform: uppercase; }
   .card .btn { width: 100%; margin-top: 14px; }
   .card__art { height: 76%; width: auto; }
+  .card__foto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   .card__brand {
     font-size: 10px;
     letter-spacing: 3px;
@@ -1397,13 +1405,13 @@
       var p = CATALOGO[i];
       if (!p.destacado) continue;
 
-      var media;
+      var media = p.arte
+        ? '<svg class="card__art" viewBox="0 0 120 170" aria-hidden="true"><use href="#' + p.arte + '"></use></svg>'
+        : '<span class="card__ph">' + flacon(120) + '<span class="card__ph-label">[FOTO]</span></span>';
+
+      // La foto se monta encima de la ilustración; si no carga, se retira y queda la ilustración.
       if (p.img) {
-        media = '<img src="' + p.img + '" alt="' + titulo(p) + '">';
-      } else if (p.arte) {
-        media = '<svg class="card__art" viewBox="0 0 120 170" aria-hidden="true"><use href="#' + p.arte + '"></use></svg>';
-      } else {
-        media = '<span class="card__ph">' + flacon(120) + '<span class="card__ph-label">[FOTO]</span></span>';
+        media += '<img class="card__foto" src="' + p.img + '" alt="' + titulo(p) + '" onerror="this.remove()">';
       }
 
       html += '<article class="card">' +
