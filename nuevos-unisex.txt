@@ -1,0 +1,8 @@
+EP-armaf-dune-escape-dubai	Armaf	Dune Escape Dubai	100 ml	EDP	Unisex	60	Sí	No	
+EP-armaf-odyssey-aqua	Armaf	Odyssey Aqua	60 ml	EDP	Unisex	38	Sí	No	
+EP-armaf-odyssey-french-kiss	Armaf	Odyssey French Kiss	100 ml	EDP	Unisex	58	Sí	No	
+EP-armaf-odyssey-pink-pop	Armaf	Odyssey Pink Pop	100 ml	EDP	Unisex	55	Sí	No	
+EP-armaf-odyssey-spectra	Armaf	Odyssey Spectra	100 ml	EDP	Unisex	45	Sí	No	
+EP-emper-le-chameau	Emper	Le Chameau Burj Dubai	100 ml	EDP	Unisex	40	Sí	No	
+EP-guess-gold	Guess	Gold	75 ml	EDT	Unisex	40	Sí	No	
+EP-issey-miyake	Issey Miyake	Issey Miyake	100 ml	EDT	Unisex	65	Sí	No	
