@@ -1,39 +1,74 @@
 <svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <radialGradient id="fondo" cx="50%" cy="42%" r="72%">
-      <stop offset="0%" stop-color="#1B3253"/>
-      <stop offset="62%" stop-color="#13253F"/>
-      <stop offset="100%" stop-color="#0A1523"/>
+    <radialGradient id="fondo" cx="50%" cy="40%" r="74%">
+      <stop offset="0%" stop-color="#1D3557"/>
+      <stop offset="58%" stop-color="#13253F"/>
+      <stop offset="100%" stop-color="#081321"/>
     </radialGradient>
-    <linearGradient id="oro" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#F0DDB0"/>
-      <stop offset="38%" stop-color="#C9A96A"/>
-      <stop offset="70%" stop-color="#9C7A42"/>
-      <stop offset="100%" stop-color="#E4CE9B"/>
+
+    <linearGradient id="oroPieza" x1="0.12" y1="0" x2="0.88" y2="1">
+      <stop offset="0%" stop-color="#FCF2D6"/>
+      <stop offset="24%" stop-color="#E0C489"/>
+      <stop offset="52%" stop-color="#B08F49"/>
+      <stop offset="74%" stop-color="#8A6A36"/>
+      <stop offset="100%" stop-color="#E8D3A0"/>
     </linearGradient>
+
+    <linearGradient id="oroAro" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F6E7BE"/>
+      <stop offset="34%" stop-color="#C9A96A"/>
+      <stop offset="66%" stop-color="#8E6F3C"/>
+      <stop offset="100%" stop-color="#EBD7A6"/>
+    </linearGradient>
+
+    <filter id="bisel" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5.5" result="desenfoque"/>
+      <feSpecularLighting in="desenfoque" surfaceScale="9" specularConstant="1.15"
+                          specularExponent="17" lighting-color="#FFF8E8" result="luz">
+        <feDistantLight azimuth="232" elevation="54"/>
+      </feSpecularLighting>
+      <feComposite in="luz" in2="SourceAlpha" operator="in" result="luzRecortada"/>
+      <feComposite in="SourceGraphic" in2="luzRecortada" operator="arithmetic"
+                   k1="0" k2="1" k3="1" k4="0" result="iluminado"/>
+      <feSpecularLighting in="desenfoque" surfaceScale="9" specularConstant="0.95"
+                          specularExponent="17" lighting-color="#0A1A33" result="sombra">
+        <feDistantLight azimuth="52" elevation="54"/>
+      </feSpecularLighting>
+      <feComposite in="sombra" in2="SourceAlpha" operator="in" result="sombraRecortada"/>
+      <feComposite in="iluminado" in2="sombraRecortada" operator="arithmetic"
+                   k1="0" k2="1" k3="-1" k4="0"/>
+    </filter>
+
+    <filter id="proyectada" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#040B15" flood-opacity="0.62"/>
+    </filter>
   </defs>
 
   <rect width="1080" height="1080" fill="url(#fondo)"/>
 
-  <circle cx="540" cy="540" r="404" fill="none" stroke="url(#oro)" stroke-width="7"/>
-  <circle cx="540" cy="540" r="356" fill="none" stroke="#C9A96A" stroke-opacity=".62"
-          stroke-width="7" stroke-linecap="round" stroke-dasharray="0.5 27"/>
+  <g filter="url(#proyectada)">
+    <circle cx="540" cy="540" r="406" fill="none" stroke="url(#oroAro)" stroke-width="11" filter="url(#bisel)"/>
+  </g>
+  <circle cx="540" cy="540" r="352" fill="none" stroke="#C9A96A" stroke-opacity=".55"
+          stroke-width="7" stroke-linecap="round" stroke-dasharray="0.5 29"/>
 
-  <g fill="#C9A96A">
-    <rect x="533" y="121" width="14" height="14" transform="rotate(45 540 128)"/>
-    <rect x="533" y="945" width="14" height="14" transform="rotate(45 540 952)"/>
-    <rect x="121" y="533" width="14" height="14" transform="rotate(45 128 540)"/>
-    <rect x="945" y="533" width="14" height="14" transform="rotate(45 952 540)"/>
+  <g fill="url(#oroAro)">
+    <rect x="531" y="115" width="18" height="18" transform="rotate(45 540 124)"/>
+    <rect x="531" y="947" width="18" height="18" transform="rotate(45 540 956)"/>
+    <rect x="115" y="531" width="18" height="18" transform="rotate(45 124 540)"/>
+    <rect x="947" y="531" width="18" height="18" transform="rotate(45 956 540)"/>
   </g>
 
-  <g transform="translate(300 300) scale(4.8)" color="#EFDCB0"
-     fill="none" stroke="#EFDCB0" stroke-width="3.6"
-     stroke-linecap="round" stroke-linejoin="round">
+  <g filter="url(#proyectada)">
+    <g transform="translate(275 275) scale(5.3)" fill="url(#oroPieza)" filter="url(#bisel)">
 
-  <path d="M42 4 h16 a3 3 0 0 1 3 3 v15 a3 3 0 0 1 -3 3 h-16 a3 3 0 0 1 -3 -3 v-15 a3 3 0 0 1 3 -3 z"/>
-  <path d="M44 25 v7 c0 6 -11 8 -15 17 c-4 8 -4 14 -4 23 v16 a8 8 0 0 0 8 8 h34 a8 8 0 0 0 8 -8 v-16 c0 -9 0 -15 -4 -23 c-4 -9 -15 -11 -15 -17 v-7"/>
-  <path d="M34 58 h32"/>
-  <path d="M34 70 h32"/>
+  <path fill-rule="evenodd" d="
+    M37 5 h26 a4 4 0 0 1 4 4 v14 a4 4 0 0 1 -4 4 h-26 a4 4 0 0 1 -4 -4 v-14 a4 4 0 0 1 4 -4 z
+    M44 27 h12 v9 h-12 z
+    M23 35 h54 a14 14 0 0 1 14 14 v33 a14 14 0 0 1 -14 14 h-54 a14 14 0 0 1 -14 -14 v-33 a14 14 0 0 1 14 -14 z
+    M50 53 L64 66 L50 79 L36 66 Z
+  "/>
  
+    </g>
   </g>
 </svg>
