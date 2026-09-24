@@ -6,7 +6,7 @@
       <stop offset="100%" stop-color="#081321"/>
     </radialGradient>
 
-    <linearGradient id="oroPieza" x1="0.12" y1="0" x2="0.88" y2="1">
+    <linearGradient id="oroPieza" gradientUnits="userSpaceOnUse" x1="10" y1="0" x2="90" y2="100">
       <stop offset="0%" stop-color="#FCF2D6"/>
       <stop offset="24%" stop-color="#E0C489"/>
       <stop offset="52%" stop-color="#B08F49"/>
@@ -39,6 +39,24 @@
                    k1="0" k2="1" k3="-1" k4="0"/>
     </filter>
 
+    <filter id="biselFino" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="desenfoque"/>
+      <feSpecularLighting in="desenfoque" surfaceScale="6" specularConstant="1.2"
+                          specularExponent="16" lighting-color="#FFF8E8" result="luz">
+        <feDistantLight azimuth="232" elevation="56"/>
+      </feSpecularLighting>
+      <feComposite in="luz" in2="SourceAlpha" operator="in" result="luzRecortada"/>
+      <feComposite in="SourceGraphic" in2="luzRecortada" operator="arithmetic"
+                   k1="0" k2="1" k3="1" k4="0" result="iluminado"/>
+      <feSpecularLighting in="desenfoque" surfaceScale="6" specularConstant="1"
+                          specularExponent="16" lighting-color="#0A1A33" result="sombra">
+        <feDistantLight azimuth="52" elevation="56"/>
+      </feSpecularLighting>
+      <feComposite in="sombra" in2="SourceAlpha" operator="in" result="sombraRecortada"/>
+      <feComposite in="iluminado" in2="sombraRecortada" operator="arithmetic"
+                   k1="0" k2="1" k3="-1" k4="0"/>
+    </filter>
+
     <filter id="proyectada" x="-40%" y="-40%" width="180%" height="180%">
       <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#040B15" flood-opacity="0.62"/>
     </filter>
@@ -60,8 +78,9 @@
   </g>
 
   <g filter="url(#proyectada)">
-    <g transform="translate(275 275) scale(5.3)" fill="url(#oroPieza)" filter="url(#bisel)">
+    <g transform="translate(275 275) scale(5.3)" fill="url(#oroPieza)">
 
+  <g filter="url(#bisel)">
   <path d="M46 28 c-13 0 -22 -5 -22 -12 c0 -6 6 -9 12 -6 c6 3 9 10 10 18 z"/>
   <path d="M54 28 c13 0 22 -5 22 -12 c0 -6 -6 -9 -12 -6 c-6 3 -9 10 -10 18 z"/>
   <path fill-rule="evenodd" d="
@@ -72,6 +91,7 @@
     M16 52 h68 v34 a7 7 0 0 1 -7 7 h-54 a7 7 0 0 1 -7 -7 z
     M46 52 h8 v41 h-8 z
   "/>
+ </g>
  
     </g>
   </g>

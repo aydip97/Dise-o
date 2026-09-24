@@ -6,7 +6,7 @@
       <stop offset="100%" stop-color="#081321"/>
     </radialGradient>
 
-    <linearGradient id="oroPieza" x1="0.12" y1="0" x2="0.88" y2="1">
+    <linearGradient id="oroPieza" gradientUnits="userSpaceOnUse" x1="10" y1="0" x2="90" y2="100">
       <stop offset="0%" stop-color="#FCF2D6"/>
       <stop offset="24%" stop-color="#E0C489"/>
       <stop offset="52%" stop-color="#B08F49"/>
@@ -39,6 +39,24 @@
                    k1="0" k2="1" k3="-1" k4="0"/>
     </filter>
 
+    <filter id="biselFino" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="desenfoque"/>
+      <feSpecularLighting in="desenfoque" surfaceScale="6" specularConstant="1.2"
+                          specularExponent="16" lighting-color="#FFF8E8" result="luz">
+        <feDistantLight azimuth="232" elevation="56"/>
+      </feSpecularLighting>
+      <feComposite in="luz" in2="SourceAlpha" operator="in" result="luzRecortada"/>
+      <feComposite in="SourceGraphic" in2="luzRecortada" operator="arithmetic"
+                   k1="0" k2="1" k3="1" k4="0" result="iluminado"/>
+      <feSpecularLighting in="desenfoque" surfaceScale="6" specularConstant="1"
+                          specularExponent="16" lighting-color="#0A1A33" result="sombra">
+        <feDistantLight azimuth="52" elevation="56"/>
+      </feSpecularLighting>
+      <feComposite in="sombra" in2="SourceAlpha" operator="in" result="sombraRecortada"/>
+      <feComposite in="iluminado" in2="sombraRecortada" operator="arithmetic"
+                   k1="0" k2="1" k3="-1" k4="0"/>
+    </filter>
+
     <filter id="proyectada" x="-40%" y="-40%" width="180%" height="180%">
       <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#040B15" flood-opacity="0.62"/>
     </filter>
@@ -60,14 +78,21 @@
   </g>
 
   <g filter="url(#proyectada)">
-    <g transform="translate(275 275) scale(5.3)" fill="url(#oroPieza)" filter="url(#bisel)">
+    <g transform="translate(275 275) scale(5.3)" fill="url(#oroPieza)">
 
-  <ellipse cx="50" cy="12" rx="27" ry="8"/><rect x="23" y="12" width="54" height="9"/>
-  <ellipse cx="50" cy="21" rx="27" ry="8"/>
-  <ellipse cx="50" cy="46" rx="27" ry="8"/><rect x="23" y="46" width="54" height="9"/>
-  <ellipse cx="50" cy="55" rx="27" ry="8"/>
-  <ellipse cx="50" cy="80" rx="27" ry="8"/><rect x="23" y="80" width="54" height="9"/>
-  <ellipse cx="50" cy="89" rx="27" ry="8"/>
+  <g filter="url(#bisel)">
+    <path fill-rule="evenodd" d="
+      M50 8 a42 42 0 1 0 0.01 0 Z
+      M50 14 a36 36 0 1 0 0.01 0 Z
+      M50 17 a33 33 0 1 0 0.01 0 Z
+    "/>
+  </g>
+  <g filter="url(#biselFino)" fill="none" stroke="url(#oroPieza)" stroke-width="6"
+     stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50 22 V78"/>
+    <path d="M61 36 C61 30 56 27 50 27 C44 27 40 30 40 36 C40 47 61 43 61 57
+             C61 64 56 68 50 68 C44 68 40 65 38 61"/>
+  </g>
  
     </g>
   </g>
